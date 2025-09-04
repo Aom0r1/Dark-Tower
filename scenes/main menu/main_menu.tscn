@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://dycqigaa6trhm"]
 
-[ext_resource type="Script" uid="uid://b1221by1vfr6u" path="res://scripts/main_menu.gd" id="1_l6cm7"]
+[ext_resource type="Script" uid="uid://b1221by1vfr6u" path="res://scripts/main_menu.gd" id="1_cbjxn"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vue75"]
 bg_color = Color(0.665186, 0.0599362, 0.120785, 1)
@@ -36,7 +36,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(1.00076, 1.0065)
-script = ExtResource("1_l6cm7")
+script = ExtResource("1_cbjxn")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1

@@ -10,7 +10,19 @@ config_version=5
 
 [application]
 
-config/name="Drak Tower"
+config/name="Dark Tower"
+config/version="0.001"
 run/main_scene="uid://dycqigaa6trhm"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
+
+[autoload]
+
+Global="*res://scripts/global.gd"
+
+[display]
+
+window/size/viewport_width=1920
+window/size/viewport_height=1080
+window/size/mode=3
+window/size/borderless=true
