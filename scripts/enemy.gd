@@ -29,11 +29,16 @@ func attack(character):
 
 func _on_area_2d_area_entered(area: Area2D) -> void:
 	var body = area.get_parent()
-	if not hit and body.is_in_group("Knight"):
-		print("hitler")
+	if area.name == "Area2D" and not hit:
 		character = body
 		$Timer.start()
 		hit = true
+
+func _on_area_2d_area_exited(area: Area2D) -> void:
+	if area.name == "Area2D":
+		$Timer.stop()
+		hit = false
+
 
 func _on_timer_timeout() -> void:
 	attack(character)
@@ -43,4 +48,4 @@ func take_damage(amount: int) -> void:
 	hp -= amount
 	if hp <= 0:
 		hp = 0
-		queue_free()
+		
