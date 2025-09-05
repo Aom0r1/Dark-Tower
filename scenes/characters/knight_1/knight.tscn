@@ -1,9 +1,10 @@
-[gd_scene load_steps=17 format=3 uid="uid://b35hv1iq6wmpb"]
+[gd_scene load_steps=19 format=3 uid="uid://b35hv1iq6wmpb"]
 
 [ext_resource type="Script" uid="uid://c2pfp5eavwrwn" path="res://scripts/knight.gd" id="1_spyc7"]
 [ext_resource type="Texture2D" uid="uid://dqv21bnjijj58" path="res://assets/Tiny Swords (Update 010)/Factions/Knights/Troops/Warrior/Red/Warrior_Red.png" id="2_g4sn6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1u74q"]
+size = Vector2(38, 65.2)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_48w8l"]
 atlas = ExtResource("2_g4sn6")
@@ -102,7 +103,13 @@ animations = [{
 "speed": 10.0
 }]
 
-[node name="Knight" type="CharacterBody2D"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_55ix1"]
+radius = 193.373
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_bu8tv"]
+radius = 417.059
+
+[node name="Knight" type="CharacterBody2D" groups=["Knight"]]
 script = ExtResource("1_spyc7")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -113,3 +120,15 @@ shape = SubResource("RectangleShape2D_1u74q")
 scale = Vector2(5, 5)
 sprite_frames = SubResource("SpriteFrames_103er")
 animation = &"idle"
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_55ix1")
+
+[node name="Area2D2" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D2"]
+shape = SubResource("CircleShape2D_bu8tv")
+
+[connection signal="area_entered" from="Area2D2" to="." method="_on_area_2d_2_area_entered"]

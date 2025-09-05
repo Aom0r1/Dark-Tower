@@ -1,0 +1,54 @@
+[gd_scene load_steps=11 format=3 uid="uid://dhtho5t5xavkv"]
+
+[ext_resource type="Script" uid="uid://ruxut7hiyqt2" path="res://scripts/sword.gd" id="1_11jj1"]
+[ext_resource type="Texture2D" uid="uid://bhakuthbjvgd1" path="res://assets/sword_anim/2.png" id="1_gwb47"]
+[ext_resource type="Texture2D" uid="uid://oy1ldwd4ep73" path="res://assets/sword_anim/3.png" id="2_11jj1"]
+[ext_resource type="Texture2D" uid="uid://bq3i3jfutvqg6" path="res://assets/sword_anim/4.png" id="3_dx2j5"]
+[ext_resource type="Texture2D" uid="uid://dnjcnsbu336mv" path="res://assets/sword_anim/1.png" id="4_xs7jb"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w46s4"]
+atlas = ExtResource("1_gwb47")
+region = Rect2(0, 0, 512, 432)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lax51"]
+atlas = ExtResource("2_11jj1")
+region = Rect2(0, 0, 512, 432)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q1t1k"]
+atlas = ExtResource("3_dx2j5")
+region = Rect2(0, 0, 512, 432)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xdw8x"]
+atlas = ExtResource("4_xs7jb")
+region = Rect2(0, 0, 512, 432)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_yyhql"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w46s4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lax51")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q1t1k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xdw8x")
+}],
+"loop": false,
+"name": &"default",
+"speed": 12.0
+}]
+
+[node name="Sword" type="Area2D"]
+script = ExtResource("1_11jj1")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+scale = Vector2(0.5, 0.5)
+polygon = PackedVector2Array(22, 115, 87, 44, 143, 8, 160, -77, 82, -137, -15, -156, -158, -108, -206, -55, -185, -109, -50, -179, 81, -202, 156, -182, 219, -118, 242, -29, 210, 73, 128, 141, 52, 151)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_yyhql")
