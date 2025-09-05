@@ -2,17 +2,16 @@ extends CharacterBody2D
 @export var speed = 500
 @export var max_hp = 100
 @export var basic_dmg = 15
-@export var sword_Path = preload("res://scenes/weapons/sword.tscn")
+@export var sword_path = preload("res://scenes/weapons/sword.tscn")
 var hp = max_hp
-func attack ():
-	var sword = sword_Path.instantiate()
-	sword.position = position
-	sword.look_at()
+func sword_attack(area: Area2D):
+	var sword = sword_path.instantiate()
+	sword.global_position = global_position
+	sword.look_at(area.global_position)
 	get_parent().add_child(sword)
 func _on_area_2d_2_area_entered(area):
 	if area.name == "enemy": 
-		attack()
-		print("vanuh")
+		sword_attack(area)
 func _physics_process(delta):
 	move()
 	move_and_slide()

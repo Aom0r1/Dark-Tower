@@ -5,7 +5,7 @@
 
 [node name="Main" type="Node2D"]
 
-[node name="Enemy" parent="." groups=["Knight"] instance=ExtResource("2_0wfyh")]
+[node name="Enemy" parent="." instance=ExtResource("2_0wfyh")]
 position = Vector2(935, 560)
 scale = Vector2(5, 5)
 speed = 200
