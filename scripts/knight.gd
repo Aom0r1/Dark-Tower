@@ -15,6 +15,7 @@ func sword_attack(area: Area2D):
 func _on_area_2d_2_area_entered(area):
 	if area.name == "enemy":
 		enemy_in_range = area
+		print("Rodip")
 
 func _on_area_2d_2_area_exited(area):
 	if area == enemy_in_range:
@@ -50,6 +51,9 @@ func move():
 
 
 func _on_timer_timeout() -> void:
-	sword_attack(enemy_in_range)
 	attack_cooldown = false
+	if enemy_in_range == null:
+		return
+	sword_attack(enemy_in_range)
+	
 	

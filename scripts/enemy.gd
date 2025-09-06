@@ -7,7 +7,6 @@ extends CharacterBody2D
 @onready var character = get_tree().get_first_node_in_group("Knight")
 
 var hp: int
-var hit: bool = false
 
 func _ready() -> void:
 	hp = max_hp
@@ -28,24 +27,22 @@ func attack(character):
 	character.take_damage(dmg)
 
 func _on_area_2d_area_entered(area: Area2D) -> void:
-	var body = area.get_parent()
-	if area.name == "Area2D" and not hit:
-		character = body
-		$Timer.start()
-		hit = true
-
-func _on_area_2d_area_exited(area: Area2D) -> void:
 	if area.name == "Area2D":
-		$Timer.stop()
-		hit = false
-
+		attack(character)
+		$Timer.start()
 
 func _on_timer_timeout() -> void:
+	#print("Pidor")
 	attack(character)
-	hit = false
 
 func take_damage(amount: int) -> void:
 	hp -= amount
 	if hp <= 0:
 		hp = 0
+		queue_free()
 		
+		
+
+func _on_enemy_area_exited(area: Area2D) -> void:
+	if area.name == "Area2D":
+		$Timer.stop()
